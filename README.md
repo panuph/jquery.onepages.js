@@ -1,7 +1,9 @@
 jquery.onepages.js
 ==================
 
-A jquery library for controlling (hide/show) pages in a one page HTML.
+A jquery library for controlling (hide/show) pages in a one page HTML. Use it the way you like it
+as long as what you are doing is legal. Comments and suggestions via Git Issues or, even better,
+Pull Requests are very much welcome.
 
 examples
 ========
