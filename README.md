@@ -43,6 +43,12 @@ examples
     <button class="onepages-class-pageI">showI</button>
     <!-- To show page II (i.e. class pageII) -->
     <button class="onepages-class-pageII">showII</button>
+    
+    <!-- To show page/pages at will -->
+    $.onepages.show("#main", "onepages-index-0");
+    $.onepages.show("#main", "onepages-class-pageI, onepages-index-1");
+    $.onepages.show("#main", ["onepages-index-0", "onepages-id-pageII"]);
+    
   </body>
 </html>
 ```
