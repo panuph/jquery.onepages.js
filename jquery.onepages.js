@@ -6,30 +6,36 @@
                 targets = (typeof targets == "string") ? targets.split(/\s*,\s*/) : targets;
                 var effect = $root.hasClass("onepages-effect-fade") ? "fade" : (
                              $root.hasClass("onepages-effect-slide") ? "slide" : null);
-                $.each(targets, function(_, target) {
-                    if (target.substr(0, 15) == "onepages-index-") {
+                var index_key = "show-index-";
+                var id_key = "show-id-";
+                var class_key = "show-class-";
+                $.each(targets, function() {
+                    if (this.substr(0, index_key.length) == index_key) {
+                        var index = parseInt(this.substr(index_key.length));
                         if (effect == "fade") {
-                            $root.children().eq(parseInt(target.substr(15))).fadeIn();
+                            $root.children().eq(index).fadeIn();
                         } else if (effect == "slide") {
-                            $root.children().eq(parseInt(target.substr(15))).slideDown();
+                            $root.children().eq(index).slideDown();
                         } else {
-                            $root.children().eq(parseInt(target.substr(15))).show();
+                            $root.children().eq(index).show();
                         }
-                    } else if (target.substr(0, 12) == "onepages-id-") {
+                    } else if (this.substr(0, id_key.length) == id_key) {
+                        var id = this.substr(id_key.length);
                         if (effect == "fade") {
-                            $("#" + target.substr(12)).fadeIn();
+                            $("#" + id).fadeIn();
                         } else if (effect == "slide") {
-                            $("#" + target.substr(12)).slideDown();
+                            $("#" + id).slideDown();
                         } else {
-                            $("#" + target.substr(12)).show();
+                            $("#" + id).show();
                         }
-                    } else if (target.substr(0, 15) == "onepages-class-") {
+                    } else if (this.substr(0, class_key.length) == class_key) {
+                        var cls = this.substr(class_key.length);
                         if (effect == "fade") {
-                            $root.children("." + target.substr(15)).fadeIn();
+                            $root.children("." + cls).fadeIn();
                         } else if (effect == "slide") {
-                            $root.children("." + target.substr(15)).slideDown();
+                            $root.children("." + cls).slideDown();
                         } else {
-                            $root.children("." + target.substr(15)).show();
+                            $root.children("." + cls).show();
                         }
                     }
                 });
@@ -50,8 +56,8 @@
             if (args.effect == "fade" || args.effect == "slide") {
                 $this.addClass("onepages-effect-" + args.effect);
             }
-            $.each(args.ctrls, function(_, ctrl) {
-                $(ctrl[0]).bind(ctrl[1], function() {
+            $.each(args.ctrls, function() {
+                $(this[0]).bind(this[1], function() {
                     $this.children().hide();
                     $.onepages.show($this, $(this).attr("class").split(/\s+/));
                 });
