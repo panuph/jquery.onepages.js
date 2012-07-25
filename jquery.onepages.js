@@ -4,9 +4,8 @@
             "show": function(root, targets) {
                 var $root = $(root);
                 targets = (typeof targets == "string") ? targets.split(/\s*,\s*/) : targets;
-                console.log(targets);
                 var effect = $root.hasClass("onepages-effect-fade") ? "fade" : (
-                $root.hasClass("onepages-effect-slide") ? "slide" : null);
+                             $root.hasClass("onepages-effect-slide") ? "slide" : null);
                 $.each(targets, function(_, target) {
                     if (target.substr(0, 15) == "onepages-index-") {
                         if (effect == "fade") {
